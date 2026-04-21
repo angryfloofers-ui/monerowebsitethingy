@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Item Details</title>
+</head>
+<body>
+  <div id="item"></div>
+
+  <script src="data.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+
+    const item = ITEMS.find(i => i.id === id);
+
+    const container = document.getElementById("item");
+
+    if (item) {
+      container.innerHTML = `
+        <h1>${item.title}</h1>
+        <img src="${item.image}" width="300">
+        <p>${item.description}</p>
+        <p><strong>Price:</strong> ${item.price}</p>
+        <p><strong>Monero Address:</strong></p>
+        <code>${item.moneroAddress}</code>
+      `;
+    } else {
+      container.innerHTML = "<p>Item not found.</p>";
+    }
+  </script>
+</body>
+</html>

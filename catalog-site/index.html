@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catalog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Item Catalog</h1>
+  <div id="catalog"></div>
+
+  <script src="data.js"></script>
+  <script>
+    const container = document.getElementById("catalog");
+
+    ITEMS.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "item";
+
+      div.innerHTML = `
+        <h2>${item.title}</h2>
+        <img src="${item.image}" width="150">
+        <p>${item.price}</p>
+        <a href="item.html?id=${item.id}">View Listing</a>
+      `;
+
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
